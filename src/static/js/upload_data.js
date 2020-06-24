@@ -12,21 +12,9 @@ map.addEventListener("click", function (e) {
     map.addOverlay(marker);
 });
 
-// function send() {
-//     $.ajax({
-//         url: "127.0.0.1/receive_data",
-//         type: "POST",
-//         dataType: "json",
-//         success: function (data) {
-//             console.log(data)
-//         }
-//     })
-// }
-
-
 $(document).ready(function () {
     $('#upload').click(function () {
-        $.post('/web_data', {data: JSON.stringify(spots)});
+        $.post('/upload', {data: JSON.stringify(spots)});
         spots = [];
         map.clearOverlays();
     });
@@ -93,15 +81,7 @@ $(document).ready(function () {
         });
         local.search(myValue);
     }
-
-
 })
-//
-// $('.upload').click(function () {
-//         $.post('/web_data', {data: JSON.stringify(spots)})
-//     });
-//     $('.clear').click(function () {
-//         $.post('/clear',{})
-//     });
+
 
 

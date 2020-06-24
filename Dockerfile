@@ -9,5 +9,5 @@ ADD . /city-sensing
 #COPY gunicorn.conf.py gunicorn.conf.py
 #COPY requirements.txt requirements.txt
 #RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements1.txt
+RUN pip install --no-cache-dir -r requirements.txt
 CMD ["gunicorn", "src.run:app", "-c", "./gunicorn.conf.py"]
