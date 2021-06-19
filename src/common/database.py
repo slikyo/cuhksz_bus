@@ -23,9 +23,13 @@ class Database(object):
     def find(collection, query):
         return Database.DATABASE[collection].find(query)
 
+    # @staticmethod
+    # def find_range(collection, sw, ne):
+    #     return Database.DATABASE[collection].find({'loc': {'$geoWithin': {'$box': [sw, ne]}}}).sort('utc_time', -1)
+
     @staticmethod
-    def find_range(sw, ne):
-        return Database.DATABASE['spots'].find({'loc': {'$geoWithin': {'$box': [sw, ne]}}}).sort('upload_time', -1)
+    def find_range(collection, sw, ne):
+        return Database.DATABASE[collection].find({'loc': {'$geoWithin': {'$box': [sw, ne]}}}).sort('utc_time', -1)
 
     @staticmethod
     def find_one(collection, query):

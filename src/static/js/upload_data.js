@@ -1,16 +1,26 @@
-const image = "static/img/car7.png";
+
+const image = "static/img/bus.png";
+
 const map = new BMap.Map("my_map");
 map.centerAndZoom(new BMap.Point(114.218316, 22.692316), 20);
-const myIcon = new BMap.Icon(image, new BMap.Size(26, 16))
+const myIcon = new BMap.Icon(image, new BMap.Size(30, 20))
 
 //单击获取点击的经纬度
 let spots = [];
 map.addEventListener("click", function (e) {
-    spots.push([e.point.lng, e.point.lat])
+    spots.push({'lng': e.point.lng, 'lat': e.point.lat})
     let pt = new BMap.Point(e.point.lng, e.point.lat);
     let marker = new BMap.Marker(pt, {icon: myIcon});  // 创建标注
     map.addOverlay(marker);
 });
+
+// map.addEventListener("click", function (e) {
+//     spots.push([e.point.lng, e.point.lat])
+//     let pt = new BMap.Point(e.point.lng, e.point.lat);
+//     let marker = new BMap.Marker(pt, {icon: myIcon});  // 创建标注
+//     map.addOverlay(marker);
+// });
+
 
 $(document).ready(function () {
     $('#upload').click(function () {

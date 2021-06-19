@@ -6,21 +6,19 @@ from src.common.database import Database
 
 
 @dataclass
-class Spot(object):
+class Bus(object):
     loc: list
-    speed: float = field(default=80.00)
-    space_length: float = field(default=6.0)
-    space_depth: float = field(default=5.0)
+    bus: str
+    dir: str = None
+    next_stop: str = None
+    current_location: str = None
+    arrival_time: datetime = None
     utc_time: datetime = field(default_factory=lambda: datetime.utcnow())
     _id: str = field(default_factory=lambda: uuid.uuid4().hex)
 
     def save_to_mongo(self):
-        Database.insert('spots', asdict(self))
-
+        Database.insert('buses', asdict(self))
 
 
 if __name__ == '__main__':
     print(type(datetime.utcnow()))
-
-
-
